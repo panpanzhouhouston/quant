@@ -153,14 +153,14 @@ def task_generator(account_detail, all_instrument_dict, ticker):
             ask_level[2] += order[2]
 
     val = account_detail['long_pos'][ticker]
-    if val[1] > 50:
+    if val and val[1] > 50:
         task.append(('order', ticker, 'ASK', val[1] - 25,
                      max(deliver_price - 0.08 + greedy_level[ticker], round(val[0], 2) + greedy_level[ticker]),
                      'LONG', False))
 
 
     val = account_detail['short_pos'][ticker]
-    if val[1] > 50:
+    if  val and val[1] > 50:
         task.append(('order', ticker, 'BID', val[1] - 25,
                      min(deliver_price + 0.08 - greedy_level[ticker], round(val[0], 2) - greedy_level[ticker]),
                      'SHORT', False))
