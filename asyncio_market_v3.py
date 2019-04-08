@@ -188,7 +188,7 @@ def main():
         i = 0
         for item in data:
             # print('before')
-            if i % 5 == 0:
+            if i % 7 == 0:
                 # print('in')
                 account_detail = position_order_parser(broker.GET_TRADER())
                 all_instrument_dict = instrument_parser(item, ['A001.PSE', 'A002.PSE', 'B001.PSE', 'B002.PSE'])
@@ -202,7 +202,7 @@ def main():
                     pass
                 else:
                     results = pool.map_async(order_on_task, tasks)
-                    results.wait(timeout=0.5)
+                    results.wait(timeout=0.8)
 
                 # pool.close()
                 print(time.time() - t0)
