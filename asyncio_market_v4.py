@@ -15,13 +15,13 @@ from multiprocessing import Pool
 
 greedy_level = {'A001.PSE': 0.01, 'A002.PSE': 0.01, 'B001.PSE': 0.01, 'B002.PSE': 0.01}
 
-short_points_ave = {'A001.PSE': deque(maxlen=30),
-                  'A002.PSE': deque(maxlen=30),
+short_points_ave = {'A001.PSE': deque(maxlen=10),
+                  'A002.PSE': deque(maxlen=10),
                   'B001.PSE': deque(maxlen=30),
                   'B002.PSE': deque(maxlen=30)}
 
-long_points_ave = {'A001.PSE': deque(maxlen=200),
-                  'A002.PSE': deque(maxlen=200),
+long_points_ave = {'A001.PSE': deque(maxlen=50),
+                  'A002.PSE': deque(maxlen=50),
                   'B001.PSE': deque(maxlen=200),
                   'B002.PSE': deque(maxlen=200)}
 
@@ -142,7 +142,9 @@ def task_generator(account_detail, all_instrument_dict, ticker, long_ave, short_
     deliver_price = all_instrument_dict[ticker]['deliver_price']
 
     if ticker == 'A002.PSE':
-        trend = (short_ave - long_ave)/1.5
+        trend = (short_ave - long_ave)
+    elif ticker == 'A001.PSE':
+        trend = (short-ave - long_ave)
     else:
         trend = (short_ave - long_ave) / 2
 
