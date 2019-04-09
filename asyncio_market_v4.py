@@ -189,7 +189,7 @@ def task_generator(account_detail, all_instrument_dict, ticker, long_ave, short_
                 ask_level[1] += order[2]
             elif round(-price + order[1], 2) == 0.10:
                 ask_level[2] += order[2]
-    else:
+    elif ticker == 'A001.PSE':
         for order in account_detail['orders'][(ticker, 0, 0)]:
             if round(price - order[1], 2) != 0.1:
                 task.append(('cancel', order[0]))
@@ -204,6 +204,22 @@ def task_generator(account_detail, all_instrument_dict, ticker, long_ave, short_
             elif round(-price + order[1], 2) == 0.10:
                 ask_level[2] += order[2]
 
+    else:
+        for order in account_detail['orders'][(ticker, 0, 0)]:
+            if round(price - order[1], 2) != 0.09:
+                task.append(('cancel', order[0]))
+
+            elif round(price - order[1], 2) == 0.09:
+                bid_level[2] += order[2]
+
+        for order in account_detail['orders'][(ticker, 1, 1)]:
+            if round(-price + order[1], 2) != 0.11:
+                task.append(('cancel', order[0]))
+
+            elif round(-price + order[1], 2) == 0.11:
+                ask_level[2] += order[2]
+
+
     if ticker in ['B001.PSE', 'B002.PSE']:
         for i in range(3):
 
@@ -215,12 +231,19 @@ def task_generator(account_detail, all_instrument_dict, ticker, long_ave, short_
                 # print('adding ask tick at ', DEL_PRC + 0.08 + 0.01*i, ' with vol', 5-ask_level[i])
                 task.append(('order', ticker, 'ASK', 5 - ask_level[i], price + 0.08 + 0.01 * i, 'SHORT', False))
 
-    else:
+    elif ticker == 'A001.PSE':
         if bid_level[2] < 15:
             task.append(('order', ticker, 'BID', 15 - bid_level[2], price - 0.1, 'LONG', False))
 
         if ask_level[2] < 15:
             task.append(('order', ticker, 'ASK', 15 - ask_level[2], price + 0.1, 'SHORT', False))
+
+    else:
+        if bid_level[2] < 15:
+            task.append(('order', ticker, 'BID', 15 - bid_level[2], price - 0.09, 'LONG', False))
+
+        if ask_level[2] < 15:
+            task.append(('order', ticker, 'ASK', 15 - ask_level[2], price + 0.11, 'SHORT', False))
 
     return task
 
