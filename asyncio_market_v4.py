@@ -169,37 +169,58 @@ def task_generator(account_detail, all_instrument_dict, ticker, long_ave, short_
                      round(val[0], 2) - greedy_level[ticker],
                      'SHORT', False))
 
-    for order in account_detail['orders'][(ticker, 0, 0)]:
-        if price - order[1] < 0.08 or price - order[1] > 0.11:
-            task.append(('cancel', order[0]))
-        elif round(price - order[1], 2) == 0.08:
-            bid_level[0] += order[2]
-        elif round(price - order[1], 2) == 0.09:
-            bid_level[1] += order[2]
-        elif round(price - order[1], 2) == 0.10:
-            bid_level[2] += order[2]
+    if ticker in ['B001.PSE', 'B001.PSE']:
+        for order in account_detail['orders'][(ticker, 0, 0)]:
+            if price - order[1] < 0.08 or price - order[1] > 0.11:
+                task.append(('cancel', order[0]))
+            elif round(price - order[1], 2) == 0.08:
+                bid_level[0] += order[2]
+            elif round(price - order[1], 2) == 0.09:
+                bid_level[1] += order[2]
+            elif round(price - order[1], 2) == 0.10:
+                bid_level[2] += order[2]
 
-    for order in account_detail['orders'][(ticker, 1, 1)]:
-        if -price + order[1] < 0.08 or -price + order[1] > 0.11:
-            task.append(('cancel', order[0]))
-        elif round(-price + order[1], 2) == 0.08:
-            ask_level[0] += order[2]
-        elif round(-price + order[1], 2) == 0.09:
-            ask_level[1] += order[2]
-        elif round(-price + order[1], 2) == 0.10:
-            ask_level[2] += order[2]
+        for order in account_detail['orders'][(ticker, 1, 1)]:
+            if -price + order[1] < 0.08 or -price + order[1] > 0.11:
+                task.append(('cancel', order[0]))
+            elif round(-price + order[1], 2) == 0.08:
+                ask_level[0] += order[2]
+            elif round(-price + order[1], 2) == 0.09:
+                ask_level[1] += order[2]
+            elif round(-price + order[1], 2) == 0.10:
+                ask_level[2] += order[2]
+    else:
+        for order in account_detail['orders'][(ticker, 0, 0)]:
+            if round(price - order[1], 2) != 0.1:
+                task.append(('cancel', order[0]))
 
+            elif round(price - order[1], 2) == 0.10:
+                bid_level[2] += order[2]
 
+        for order in account_detail['orders'][(ticker, 1, 1)]:
+            if round(-price + order[1], 2) != 0.1:
+                task.append(('cancel', order[0]))
 
+            elif round(-price + order[1], 2) == 0.10:
+                ask_level[2] += order[2]
 
-    for i in range(3):
-        if bid_level[i] < 5:
-            # print('adding bid tick at ', DEL_PRC - 0.08 - 0.01*i, ' with vol', 5-bid_level[i])
-            task.append(('order', ticker, 'BID', 5 - bid_level[i], price - 0.08 - 0.01 * i, 'LONG', False))
+    if ticker in ['B001.PSE', 'B002.PSE']:
+        for i in range(3):
 
-        if ask_level[i] < 5:
-            # print('adding ask tick at ', DEL_PRC + 0.08 + 0.01*i, ' with vol', 5-ask_level[i])
-            task.append(('order', ticker, 'ASK', 5 - ask_level[i], price + 0.08 + 0.01 * i, 'SHORT', False))
+            if bid_level[i] < 5:
+                # print('adding bid tick at ', DEL_PRC - 0.08 - 0.01*i, ' with vol', 5-bid_level[i])
+                task.append(('order', ticker, 'BID', 5 - bid_level[i], price - 0.08 - 0.01 * i, 'LONG', False))
+
+            if ask_level[i] < 5:
+                # print('adding ask tick at ', DEL_PRC + 0.08 + 0.01*i, ' with vol', 5-ask_level[i])
+                task.append(('order', ticker, 'ASK', 5 - ask_level[i], price + 0.08 + 0.01 * i, 'SHORT', False))
+
+    else:
+        if bid_level[2] < 15:
+            task.append(('order', ticker, 'BID', 15 - bid_level[2], price - 0.1, 'LONG', False))
+
+        if ask_level[2] < 15:
+            task.append(('order', ticker, 'ASK', 15 - ask_level[2], price + 0.1, 'SHORT', False))
 
     return task
 
@@ -208,7 +229,7 @@ def main():
     market_channel = grpc.insecure_channel('113.208.112.25:57600')
     market_stub = broker_pb2_grpc.MarketDataStub(market_channel)
     pool = Pool(processes=200)
-    broker = Broker(5, 'qWC6G7nao', '113.208.112.25:57502')
+    broker = Broker(25, 'qWC6G7nao', '113.208.112.25:57502')
     data = market_stub.subscribe(common_pb2.Empty())
     try:
         i = 0
@@ -268,7 +289,7 @@ def test_neworder():
 
 
 
-broker = Broker(5, 'qWC6G7nao', '113.208.112.25:57502')
+broker = Broker(25, 'qWC6G7nao', '113.208.112.25:57502')
 main()
 
 
