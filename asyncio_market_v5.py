@@ -291,7 +291,7 @@ def main():
                 long_points_ave[sym].append(all_instrument_dict[sym]['deliver_price'])
                 short_points_ave[sym].append(all_instrument_dict[sym]['deliver_price'])
 
-            if i % 15 == 14:
+            if i % 10 == 9:
                 # print('in')
                 account_detail = position_order_parser(broker.GET_TRADER())
 
@@ -308,7 +308,7 @@ def main():
                     pass
                 else:
                     results = pool.map_async(order_on_task, tasks)
-                    results.wait(timeout=1.5)
+                    results.wait(timeout=1.4)
 
                 # pool.close()
                 print(time.time() - t0)
