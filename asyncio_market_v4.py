@@ -141,7 +141,11 @@ def order_on_task(task):
 def task_generator(account_detail, all_instrument_dict, ticker, long_ave, short_ave):
     deliver_price = all_instrument_dict[ticker]['deliver_price']
 
-    trend = (short_ave - long_ave)/2.5
+    if ticker == 'A002.PSE':
+        trend = (short_ave - long_ave)/2
+    else:
+        trend = (short_ave - long_ave) / 2.5
+        
     price = round(short_ave + trend, 2)
 
     bid_level = [0, 0, 0]
