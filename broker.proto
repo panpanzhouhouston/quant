@@ -10,6 +10,12 @@ import "common.proto";
 
 // Public API for traders
 service Broker {
+    rpc info (Empty) returns (BrokerInfo);
+
+    // A trader must first register at the Broker and acquire a valid trader
+    // ID and PIN.
+    rpc register (RegisterRequest) returns (TraderResponse);
+
     // Submits a new order.
     rpc new_order (TraderRequest) returns (TraderResponse);
 
@@ -18,18 +24,7 @@ service Broker {
 
     // Requests a full update of the trader data.
     rpc get_trader (TraderRequest) returns (TraderResponse);
-
-    rpc get_traders_info (TraderRequest) returns (CompactTradeSummaryList);
 }
-
-// Provides access to real-time market data
-service MarketData {
-    // Returns static properties of the instruments in the Exchange.
-    rpc list_instruments (Empty) returns (InstrumentInfoList);
-
-    rpc subscribe (Empty) returns (stream MarketSnapshot);
-}
-
 
 //////////////////////////////////////////////////////////////////////////////
 // Request Messsages
@@ -143,6 +138,16 @@ message OrderList {
     map<int64, OrderInfo> orders = 1;
 }
 
+message CompactMarketMakeRecord {
+    string symbol = 1;
+    double percent = 2;
+}
+
+message VolumeRecord {
+    string symbol = 1;
+    int32 volume = 2;
+}
+
 message TraderResponse {
     double timestamp = 1;
 
@@ -155,24 +160,20 @@ message TraderResponse {
     PositionList positions = 5;
 
     OrderList orders = 6;
-}
 
-message CompactMarketMakeRecord {
-    string symbol = 1;
-    double percent = 2;
-}
-
-message CompactTradeSummary {
-    int32 trader_id = 1;
-    double timestamp = 2;
-    double pnl = 3;
+    double pnl = 7;
     // Market make complete percent
-    repeated CompactMarketMakeRecord market_records = 4;
+    repeated CompactMarketMakeRecord market_records = 8;
+
+    repeated VolumeRecord volume_records = 9;
 }
 
-message CompactTradeSummaryList {
-    repeated CompactTradeSummary traders = 1;
-    ResultCode result_code = 2;
+// Provides access to real-time market data
+service MarketData {
+    // Returns static properties of the instruments in the Exchange.
+    rpc list_instruments (Empty) returns (InstrumentInfoList);
+
+    rpc subscribe (Empty) returns (stream MarketSnapshot);
 }
 
 // Snapshot of an instrument's orderbook.

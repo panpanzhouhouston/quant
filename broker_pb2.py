@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0c\x62roker.proto\x1a\x0c\x63ommon.proto\"M\n\x0fRegisterRequest\x12\x13\n\x0btrader_name\x18\x01 \x01(\t\x12\x12\n\ntrader_pin\x18\x02 \x01(\t\x12\x11\n\tinit_cash\x18\x03 \x01(\x01\"5\n\x0cLoginRequest\x12\x11\n\ttrader_id\x18\x01 \x01(\x05\x12\x12\n\ntrader_pin\x18\x02 \x01(\t\"\xfc\x01\n\rTraderRequest\x12\x11\n\ttrader_id\x18\x01 \x01(\x05\x12\x12\n\ntrader_pin\x18\x02 \x01(\t\x12\"\n\x0crequest_type\x18\x03 \x01(\x0e\x32\x0c.RequestType\x12\x10\n\x08order_id\x18\x04 \x01(\x03\x12\x13\n\x04side\x18\x06 \x01(\x0e\x32\x05.Side\x12\x0e\n\x06symbol\x18\x07 \x01(\t\x12\x0e\n\x06volume\x18\x08 \x01(\x05\x12\r\n\x05price\x18\t \x01(\x01\x12\x11\n\tis_market\x18\n \x01(\x08\x12\x1f\n\x08pos_type\x18\x0b \x01(\x0e\x32\r.PositionType\x12\x16\n\x0eorig_timestamp\x18\x0c \x01(\x01\"&\n\nBrokerInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x89\x01\n\nTraderInfo\x12\x11\n\tbroker_id\x18\x01 \x01(\x05\x12\x11\n\ttrader_id\x18\x02 \x01(\x05\x12\x12\n\ntrader_pin\x18\x03 \x01(\t\x12\x13\n\x0btrader_name\x18\x04 \x01(\t\x12\x17\n\x0f\x63ommission_rate\x18\x05 \x01(\x01\x12\x13\n\x0bmargin_rate\x18\x06 \x01(\x01\"\xa3\x01\n\rTraderAccount\x12\x10\n\x08is_alive\x18\x01 \x01(\x08\x12\x12\n\ntotal_cash\x18\x02 \x01(\x01\x12\x16\n\x0eunrealized_pnl\x18\x03 \x01(\x01\x12\x13\n\x0blocked_cash\x18\x04 \x01(\x01\x12\x15\n\roccupied_cash\x18\x05 \x01(\x01\x12\x14\n\x0crealized_pnl\x18\x06 \x01(\x01\x12\x12\n\ncommission\x18\x07 \x01(\x01\"\x8d\x01\n\x0cPositionInfo\x12\x0e\n\x06volume\x18\x01 \x01(\x05\x12\x15\n\rlocked_volume\x18\x02 \x01(\x05\x12\x15\n\roccupied_cash\x18\x03 \x01(\x01\x12\x11\n\tavg_price\x18\x04 \x01(\x01\x12\x16\n\x0eunrealized_pnl\x18\x05 \x01(\x01\x12\x14\n\x0crealized_pnl\x18\x06 \x01(\x01\"\x8f\x02\n\x0cPositionList\x12\x38\n\x0elong_positions\x18\x01 \x03(\x0b\x32 .PositionList.LongPositionsEntry\x12:\n\x0fshort_positions\x18\x02 \x03(\x0b\x32!.PositionList.ShortPositionsEntry\x1a\x43\n\x12LongPositionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1c\n\x05value\x18\x02 \x01(\x0b\x32\r.PositionInfo:\x02\x38\x01\x1a\x44\n\x13ShortPositionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1c\n\x05value\x18\x02 \x01(\x0b\x32\r.PositionInfo:\x02\x38\x01\"\xdf\x01\n\tOrderInfo\x12\x10\n\x08order_id\x18\x01 \x01(\x03\x12\x0e\n\x06symbol\x18\x02 \x01(\t\x12\x13\n\x04side\x18\x03 \x01(\x0e\x32\x05.Side\x12\x1f\n\x08pos_type\x18\x04 \x01(\x0e\x32\r.PositionType\x12\x12\n\ninit_price\x18\x05 \x01(\x01\x12\x13\n\x0binit_volume\x18\x06 \x01(\x05\x12\x1a\n\x05state\x18\x07 \x01(\x0e\x32\x0b.OrderState\x12\x0e\n\x06volume\x18\x08 \x01(\x05\x12\x11\n\tavg_price\x18\t \x01(\x01\x12\x12\n\ncommission\x18\n \x01(\x01\"n\n\tOrderList\x12&\n\x06orders\x18\x01 \x03(\x0b\x32\x16.OrderList.OrdersEntry\x1a\x39\n\x0bOrdersEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\x19\n\x05value\x18\x02 \x01(\x0b\x32\n.OrderInfo:\x02\x38\x01\"\xbf\x01\n\x0eTraderResponse\x12\x11\n\ttimestamp\x18\x01 \x01(\x01\x12 \n\x0bresult_code\x18\x02 \x01(\x0e\x32\x0b.ResultCode\x12\x19\n\x04info\x18\x03 \x01(\x0b\x32\x0b.TraderInfo\x12\x1f\n\x07\x61\x63\x63ount\x18\x04 \x01(\x0b\x32\x0e.TraderAccount\x12 \n\tpositions\x18\x05 \x01(\x0b\x32\r.PositionList\x12\x1a\n\x06orders\x18\x06 \x01(\x0b\x32\n.OrderList\":\n\x17\x43ompactMarketMakeRecord\x12\x0e\n\x06symbol\x18\x01 \x01(\t\x12\x0f\n\x07percent\x18\x02 \x01(\x01\"z\n\x13\x43ompactTradeSummary\x12\x11\n\ttrader_id\x18\x01 \x01(\x05\x12\x11\n\ttimestamp\x18\x02 \x01(\x01\x12\x0b\n\x03pnl\x18\x03 \x01(\x01\x12\x30\n\x0emarket_records\x18\x04 \x03(\x0b\x32\x18.CompactMarketMakeRecord\"b\n\x17\x43ompactTradeSummaryList\x12%\n\x07traders\x18\x01 \x03(\x0b\x32\x14.CompactTradeSummary\x12 \n\x0bresult_code\x18\x02 \x01(\x0e\x32\x0b.ResultCode\"\xdf\x02\n\x11OrderBookSnapshot\x12\x0e\n\x06symbol\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x01\x12\x12\n\nlast_price\x18\x04 \x01(\x01\x12\x15\n\rtraded_volume\x18\x05 \x01(\x03\x12\x12\n\nbid_volume\x18\x06 \x01(\x03\x12\x12\n\nask_volume\x18\x07 \x01(\x03\x12\x17\n\x0f\x62id_order_count\x18\x08 \x01(\x05\x12\x17\n\x0f\x61sk_order_count\x18\t \x01(\x05\x12\x11\n\tbid_depth\x18\n \x01(\x05\x12\x11\n\task_depth\x18\x0b \x01(\x05\x12 \n\nbid_levels\x18\x0c \x03(\x0b\x32\x0c.QuoteRecord\x12 \n\nask_levels\x18\r \x03(\x0b\x32\x0c.QuoteRecord\x12!\n\x0blast_trades\x18\x0e \x03(\x0b\x32\x0c.TradeRecord\x12\x15\n\rdeliver_price\x18\x0f \x01(\x01\"Q\n\x0eMarketSnapshot\x12\x16\n\x0eis_incremental\x18\x01 \x01(\x08\x12\'\n\x0binstruments\x18\x02 \x03(\x0b\x32\x12.OrderBookSnapshot2\xd4\x01\n\x06\x42roker\x12,\n\tnew_order\x12\x0e.TraderRequest\x1a\x0f.TraderResponse\x12/\n\x0c\x63\x61ncel_order\x12\x0e.TraderRequest\x1a\x0f.TraderResponse\x12-\n\nget_trader\x12\x0e.TraderRequest\x1a\x0f.TraderResponse\x12<\n\x10get_traders_info\x12\x0e.TraderRequest\x1a\x18.CompactTradeSummaryList2e\n\nMarketData\x12/\n\x10list_instruments\x12\x06.Empty\x1a\x13.InstrumentInfoList\x12&\n\tsubscribe\x12\x06.Empty\x1a\x0f.MarketSnapshot0\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x0c\x62roker.proto\x1a\x0c\x63ommon.proto\"M\n\x0fRegisterRequest\x12\x13\n\x0btrader_name\x18\x01 \x01(\t\x12\x12\n\ntrader_pin\x18\x02 \x01(\t\x12\x11\n\tinit_cash\x18\x03 \x01(\x01\"5\n\x0cLoginRequest\x12\x11\n\ttrader_id\x18\x01 \x01(\x05\x12\x12\n\ntrader_pin\x18\x02 \x01(\t\"\xfc\x01\n\rTraderRequest\x12\x11\n\ttrader_id\x18\x01 \x01(\x05\x12\x12\n\ntrader_pin\x18\x02 \x01(\t\x12\"\n\x0crequest_type\x18\x03 \x01(\x0e\x32\x0c.RequestType\x12\x10\n\x08order_id\x18\x04 \x01(\x03\x12\x13\n\x04side\x18\x06 \x01(\x0e\x32\x05.Side\x12\x0e\n\x06symbol\x18\x07 \x01(\t\x12\x0e\n\x06volume\x18\x08 \x01(\x05\x12\r\n\x05price\x18\t \x01(\x01\x12\x11\n\tis_market\x18\n \x01(\x08\x12\x1f\n\x08pos_type\x18\x0b \x01(\x0e\x32\r.PositionType\x12\x16\n\x0eorig_timestamp\x18\x0c \x01(\x01\"&\n\nBrokerInfo\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x89\x01\n\nTraderInfo\x12\x11\n\tbroker_id\x18\x01 \x01(\x05\x12\x11\n\ttrader_id\x18\x02 \x01(\x05\x12\x12\n\ntrader_pin\x18\x03 \x01(\t\x12\x13\n\x0btrader_name\x18\x04 \x01(\t\x12\x17\n\x0f\x63ommission_rate\x18\x05 \x01(\x01\x12\x13\n\x0bmargin_rate\x18\x06 \x01(\x01\"\xa3\x01\n\rTraderAccount\x12\x10\n\x08is_alive\x18\x01 \x01(\x08\x12\x12\n\ntotal_cash\x18\x02 \x01(\x01\x12\x16\n\x0eunrealized_pnl\x18\x03 \x01(\x01\x12\x13\n\x0blocked_cash\x18\x04 \x01(\x01\x12\x15\n\roccupied_cash\x18\x05 \x01(\x01\x12\x14\n\x0crealized_pnl\x18\x06 \x01(\x01\x12\x12\n\ncommission\x18\x07 \x01(\x01\"\x8d\x01\n\x0cPositionInfo\x12\x0e\n\x06volume\x18\x01 \x01(\x05\x12\x15\n\rlocked_volume\x18\x02 \x01(\x05\x12\x15\n\roccupied_cash\x18\x03 \x01(\x01\x12\x11\n\tavg_price\x18\x04 \x01(\x01\x12\x16\n\x0eunrealized_pnl\x18\x05 \x01(\x01\x12\x14\n\x0crealized_pnl\x18\x06 \x01(\x01\"\x8f\x02\n\x0cPositionList\x12\x38\n\x0elong_positions\x18\x01 \x03(\x0b\x32 .PositionList.LongPositionsEntry\x12:\n\x0fshort_positions\x18\x02 \x03(\x0b\x32!.PositionList.ShortPositionsEntry\x1a\x43\n\x12LongPositionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1c\n\x05value\x18\x02 \x01(\x0b\x32\r.PositionInfo:\x02\x38\x01\x1a\x44\n\x13ShortPositionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1c\n\x05value\x18\x02 \x01(\x0b\x32\r.PositionInfo:\x02\x38\x01\"\xdf\x01\n\tOrderInfo\x12\x10\n\x08order_id\x18\x01 \x01(\x03\x12\x0e\n\x06symbol\x18\x02 \x01(\t\x12\x13\n\x04side\x18\x03 \x01(\x0e\x32\x05.Side\x12\x1f\n\x08pos_type\x18\x04 \x01(\x0e\x32\r.PositionType\x12\x12\n\ninit_price\x18\x05 \x01(\x01\x12\x13\n\x0binit_volume\x18\x06 \x01(\x05\x12\x1a\n\x05state\x18\x07 \x01(\x0e\x32\x0b.OrderState\x12\x0e\n\x06volume\x18\x08 \x01(\x05\x12\x11\n\tavg_price\x18\t \x01(\x01\x12\x12\n\ncommission\x18\n \x01(\x01\"n\n\tOrderList\x12&\n\x06orders\x18\x01 \x03(\x0b\x32\x16.OrderList.OrdersEntry\x1a\x39\n\x0bOrdersEntry\x12\x0b\n\x03key\x18\x01 \x01(\x03\x12\x19\n\x05value\x18\x02 \x01(\x0b\x32\n.OrderInfo:\x02\x38\x01\":\n\x17\x43ompactMarketMakeRecord\x12\x0e\n\x06symbol\x18\x01 \x01(\t\x12\x0f\n\x07percent\x18\x02 \x01(\x01\".\n\x0cVolumeRecord\x12\x0e\n\x06symbol\x18\x01 \x01(\t\x12\x0e\n\x06volume\x18\x02 \x01(\x05\"\xa5\x02\n\x0eTraderResponse\x12\x11\n\ttimestamp\x18\x01 \x01(\x01\x12 \n\x0bresult_code\x18\x02 \x01(\x0e\x32\x0b.ResultCode\x12\x19\n\x04info\x18\x03 \x01(\x0b\x32\x0b.TraderInfo\x12\x1f\n\x07\x61\x63\x63ount\x18\x04 \x01(\x0b\x32\x0e.TraderAccount\x12 \n\tpositions\x18\x05 \x01(\x0b\x32\r.PositionList\x12\x1a\n\x06orders\x18\x06 \x01(\x0b\x32\n.OrderList\x12\x0b\n\x03pnl\x18\x07 \x01(\x01\x12\x30\n\x0emarket_records\x18\x08 \x03(\x0b\x32\x18.CompactMarketMakeRecord\x12%\n\x0evolume_records\x18\t \x03(\x0b\x32\r.VolumeRecord\"\xdf\x02\n\x11OrderBookSnapshot\x12\x0e\n\x06symbol\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x01\x12\x12\n\nlast_price\x18\x04 \x01(\x01\x12\x15\n\rtraded_volume\x18\x05 \x01(\x03\x12\x12\n\nbid_volume\x18\x06 \x01(\x03\x12\x12\n\nask_volume\x18\x07 \x01(\x03\x12\x17\n\x0f\x62id_order_count\x18\x08 \x01(\x05\x12\x17\n\x0f\x61sk_order_count\x18\t \x01(\x05\x12\x11\n\tbid_depth\x18\n \x01(\x05\x12\x11\n\task_depth\x18\x0b \x01(\x05\x12 \n\nbid_levels\x18\x0c \x03(\x0b\x32\x0c.QuoteRecord\x12 \n\nask_levels\x18\r \x03(\x0b\x32\x0c.QuoteRecord\x12!\n\x0blast_trades\x18\x0e \x03(\x0b\x32\x0c.TradeRecord\x12\x15\n\rdeliver_price\x18\x0f \x01(\x01\"Q\n\x0eMarketSnapshot\x12\x16\n\x0eis_incremental\x18\x01 \x01(\x08\x12\'\n\x0binstruments\x18\x02 \x03(\x0b\x32\x12.OrderBookSnapshot2\xe2\x01\n\x06\x42roker\x12\x1b\n\x04info\x12\x06.Empty\x1a\x0b.BrokerInfo\x12-\n\x08register\x12\x10.RegisterRequest\x1a\x0f.TraderResponse\x12,\n\tnew_order\x12\x0e.TraderRequest\x1a\x0f.TraderResponse\x12/\n\x0c\x63\x61ncel_order\x12\x0e.TraderRequest\x1a\x0f.TraderResponse\x12-\n\nget_trader\x12\x0e.TraderRequest\x1a\x0f.TraderResponse2e\n\nMarketData\x12/\n\x10list_instruments\x12\x06.Empty\x1a\x13.InstrumentInfoList\x12&\n\tsubscribe\x12\x06.Empty\x1a\x0f.MarketSnapshot0\x01\x62\x06proto3')
   ,
   dependencies=[common__pb2.DESCRIPTOR,])
 
@@ -728,6 +728,82 @@ _ORDERLIST = _descriptor.Descriptor(
 )
 
 
+_COMPACTMARKETMAKERECORD = _descriptor.Descriptor(
+  name='CompactMarketMakeRecord',
+  full_name='CompactMarketMakeRecord',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='symbol', full_name='CompactMarketMakeRecord.symbol', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='percent', full_name='CompactMarketMakeRecord.percent', index=1,
+      number=2, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1521,
+  serialized_end=1579,
+)
+
+
+_VOLUMERECORD = _descriptor.Descriptor(
+  name='VolumeRecord',
+  full_name='VolumeRecord',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='symbol', full_name='VolumeRecord.symbol', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='volume', full_name='VolumeRecord.volume', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1581,
+  serialized_end=1627,
+)
+
+
 _TRADERRESPONSE = _descriptor.Descriptor(
   name='TraderResponse',
   full_name='TraderResponse',
@@ -777,92 +853,23 @@ _TRADERRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1522,
-  serialized_end=1713,
-)
-
-
-_COMPACTMARKETMAKERECORD = _descriptor.Descriptor(
-  name='CompactMarketMakeRecord',
-  full_name='CompactMarketMakeRecord',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
     _descriptor.FieldDescriptor(
-      name='symbol', full_name='CompactMarketMakeRecord.symbol', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='percent', full_name='CompactMarketMakeRecord.percent', index=1,
-      number=2, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1715,
-  serialized_end=1773,
-)
-
-
-_COMPACTTRADESUMMARY = _descriptor.Descriptor(
-  name='CompactTradeSummary',
-  full_name='CompactTradeSummary',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='trader_id', full_name='CompactTradeSummary.trader_id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='timestamp', full_name='CompactTradeSummary.timestamp', index=1,
-      number=2, type=1, cpp_type=5, label=1,
+      name='pnl', full_name='TraderResponse.pnl', index=6,
+      number=7, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='pnl', full_name='CompactTradeSummary.pnl', index=2,
-      number=3, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
+      name='market_records', full_name='TraderResponse.market_records', index=7,
+      number=8, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='market_records', full_name='CompactTradeSummary.market_records', index=3,
-      number=4, type=11, cpp_type=10, label=3,
+      name='volume_records', full_name='TraderResponse.volume_records', index=8,
+      number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -879,46 +886,8 @@ _COMPACTTRADESUMMARY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1775,
-  serialized_end=1897,
-)
-
-
-_COMPACTTRADESUMMARYLIST = _descriptor.Descriptor(
-  name='CompactTradeSummaryList',
-  full_name='CompactTradeSummaryList',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='traders', full_name='CompactTradeSummaryList.traders', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='result_code', full_name='CompactTradeSummaryList.result_code', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1899,
-  serialized_end=1997,
+  serialized_start=1630,
+  serialized_end=1923,
 )
 
 
@@ -1039,8 +1008,8 @@ _ORDERBOOKSNAPSHOT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2000,
-  serialized_end=2351,
+  serialized_start=1926,
+  serialized_end=2277,
 )
 
 
@@ -1077,8 +1046,8 @@ _MARKETSNAPSHOT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2353,
-  serialized_end=2434,
+  serialized_start=2279,
+  serialized_end=2360,
 )
 
 _TRADERREQUEST.fields_by_name['request_type'].enum_type = common__pb2._REQUESTTYPE
@@ -1101,9 +1070,8 @@ _TRADERRESPONSE.fields_by_name['info'].message_type = _TRADERINFO
 _TRADERRESPONSE.fields_by_name['account'].message_type = _TRADERACCOUNT
 _TRADERRESPONSE.fields_by_name['positions'].message_type = _POSITIONLIST
 _TRADERRESPONSE.fields_by_name['orders'].message_type = _ORDERLIST
-_COMPACTTRADESUMMARY.fields_by_name['market_records'].message_type = _COMPACTMARKETMAKERECORD
-_COMPACTTRADESUMMARYLIST.fields_by_name['traders'].message_type = _COMPACTTRADESUMMARY
-_COMPACTTRADESUMMARYLIST.fields_by_name['result_code'].enum_type = common__pb2._RESULTCODE
+_TRADERRESPONSE.fields_by_name['market_records'].message_type = _COMPACTMARKETMAKERECORD
+_TRADERRESPONSE.fields_by_name['volume_records'].message_type = _VOLUMERECORD
 _ORDERBOOKSNAPSHOT.fields_by_name['bid_levels'].message_type = common__pb2._QUOTERECORD
 _ORDERBOOKSNAPSHOT.fields_by_name['ask_levels'].message_type = common__pb2._QUOTERECORD
 _ORDERBOOKSNAPSHOT.fields_by_name['last_trades'].message_type = common__pb2._TRADERECORD
@@ -1118,10 +1086,9 @@ DESCRIPTOR.message_types_by_name['PositionInfo'] = _POSITIONINFO
 DESCRIPTOR.message_types_by_name['PositionList'] = _POSITIONLIST
 DESCRIPTOR.message_types_by_name['OrderInfo'] = _ORDERINFO
 DESCRIPTOR.message_types_by_name['OrderList'] = _ORDERLIST
-DESCRIPTOR.message_types_by_name['TraderResponse'] = _TRADERRESPONSE
 DESCRIPTOR.message_types_by_name['CompactMarketMakeRecord'] = _COMPACTMARKETMAKERECORD
-DESCRIPTOR.message_types_by_name['CompactTradeSummary'] = _COMPACTTRADESUMMARY
-DESCRIPTOR.message_types_by_name['CompactTradeSummaryList'] = _COMPACTTRADESUMMARYLIST
+DESCRIPTOR.message_types_by_name['VolumeRecord'] = _VOLUMERECORD
+DESCRIPTOR.message_types_by_name['TraderResponse'] = _TRADERRESPONSE
 DESCRIPTOR.message_types_by_name['OrderBookSnapshot'] = _ORDERBOOKSNAPSHOT
 DESCRIPTOR.message_types_by_name['MarketSnapshot'] = _MARKETSNAPSHOT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -1220,13 +1187,6 @@ OrderList = _reflection.GeneratedProtocolMessageType('OrderList', (_message.Mess
 _sym_db.RegisterMessage(OrderList)
 _sym_db.RegisterMessage(OrderList.OrdersEntry)
 
-TraderResponse = _reflection.GeneratedProtocolMessageType('TraderResponse', (_message.Message,), dict(
-  DESCRIPTOR = _TRADERRESPONSE,
-  __module__ = 'broker_pb2'
-  # @@protoc_insertion_point(class_scope:TraderResponse)
-  ))
-_sym_db.RegisterMessage(TraderResponse)
-
 CompactMarketMakeRecord = _reflection.GeneratedProtocolMessageType('CompactMarketMakeRecord', (_message.Message,), dict(
   DESCRIPTOR = _COMPACTMARKETMAKERECORD,
   __module__ = 'broker_pb2'
@@ -1234,19 +1194,19 @@ CompactMarketMakeRecord = _reflection.GeneratedProtocolMessageType('CompactMarke
   ))
 _sym_db.RegisterMessage(CompactMarketMakeRecord)
 
-CompactTradeSummary = _reflection.GeneratedProtocolMessageType('CompactTradeSummary', (_message.Message,), dict(
-  DESCRIPTOR = _COMPACTTRADESUMMARY,
+VolumeRecord = _reflection.GeneratedProtocolMessageType('VolumeRecord', (_message.Message,), dict(
+  DESCRIPTOR = _VOLUMERECORD,
   __module__ = 'broker_pb2'
-  # @@protoc_insertion_point(class_scope:CompactTradeSummary)
+  # @@protoc_insertion_point(class_scope:VolumeRecord)
   ))
-_sym_db.RegisterMessage(CompactTradeSummary)
+_sym_db.RegisterMessage(VolumeRecord)
 
-CompactTradeSummaryList = _reflection.GeneratedProtocolMessageType('CompactTradeSummaryList', (_message.Message,), dict(
-  DESCRIPTOR = _COMPACTTRADESUMMARYLIST,
+TraderResponse = _reflection.GeneratedProtocolMessageType('TraderResponse', (_message.Message,), dict(
+  DESCRIPTOR = _TRADERRESPONSE,
   __module__ = 'broker_pb2'
-  # @@protoc_insertion_point(class_scope:CompactTradeSummaryList)
+  # @@protoc_insertion_point(class_scope:TraderResponse)
   ))
-_sym_db.RegisterMessage(CompactTradeSummaryList)
+_sym_db.RegisterMessage(TraderResponse)
 
 OrderBookSnapshot = _reflection.GeneratedProtocolMessageType('OrderBookSnapshot', (_message.Message,), dict(
   DESCRIPTOR = _ORDERBOOKSNAPSHOT,
@@ -1273,13 +1233,31 @@ _BROKER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=2437,
-  serialized_end=2649,
+  serialized_start=2363,
+  serialized_end=2589,
   methods=[
+  _descriptor.MethodDescriptor(
+    name='info',
+    full_name='Broker.info',
+    index=0,
+    containing_service=None,
+    input_type=common__pb2._EMPTY,
+    output_type=_BROKERINFO,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='register',
+    full_name='Broker.register',
+    index=1,
+    containing_service=None,
+    input_type=_REGISTERREQUEST,
+    output_type=_TRADERRESPONSE,
+    serialized_options=None,
+  ),
   _descriptor.MethodDescriptor(
     name='new_order',
     full_name='Broker.new_order',
-    index=0,
+    index=2,
     containing_service=None,
     input_type=_TRADERREQUEST,
     output_type=_TRADERRESPONSE,
@@ -1288,7 +1266,7 @@ _BROKER = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='cancel_order',
     full_name='Broker.cancel_order',
-    index=1,
+    index=3,
     containing_service=None,
     input_type=_TRADERREQUEST,
     output_type=_TRADERRESPONSE,
@@ -1297,19 +1275,10 @@ _BROKER = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='get_trader',
     full_name='Broker.get_trader',
-    index=2,
+    index=4,
     containing_service=None,
     input_type=_TRADERREQUEST,
     output_type=_TRADERRESPONSE,
-    serialized_options=None,
-  ),
-  _descriptor.MethodDescriptor(
-    name='get_traders_info',
-    full_name='Broker.get_traders_info',
-    index=3,
-    containing_service=None,
-    input_type=_TRADERREQUEST,
-    output_type=_COMPACTTRADESUMMARYLIST,
     serialized_options=None,
   ),
 ])
@@ -1324,8 +1293,8 @@ _MARKETDATA = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   serialized_options=None,
-  serialized_start=2651,
-  serialized_end=2752,
+  serialized_start=2591,
+  serialized_end=2692,
   methods=[
   _descriptor.MethodDescriptor(
     name='list_instruments',

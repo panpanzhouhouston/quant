@@ -19,6 +19,16 @@ class BrokerStub(object):
     Args:
       channel: A grpc.Channel.
     """
+    self.info = channel.unary_unary(
+        '/Broker/info',
+        request_serializer=common__pb2.Empty.SerializeToString,
+        response_deserializer=broker__pb2.BrokerInfo.FromString,
+        )
+    self.register = channel.unary_unary(
+        '/Broker/register',
+        request_serializer=broker__pb2.RegisterRequest.SerializeToString,
+        response_deserializer=broker__pb2.TraderResponse.FromString,
+        )
     self.new_order = channel.unary_unary(
         '/Broker/new_order',
         request_serializer=broker__pb2.TraderRequest.SerializeToString,
@@ -34,11 +44,6 @@ class BrokerStub(object):
         request_serializer=broker__pb2.TraderRequest.SerializeToString,
         response_deserializer=broker__pb2.TraderResponse.FromString,
         )
-    self.get_traders_info = channel.unary_unary(
-        '/Broker/get_traders_info',
-        request_serializer=broker__pb2.TraderRequest.SerializeToString,
-        response_deserializer=broker__pb2.CompactTradeSummaryList.FromString,
-        )
 
 
 class BrokerServicer(object):
@@ -48,6 +53,21 @@ class BrokerServicer(object):
 
   Public API for traders
   """
+
+  def info(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def register(self, request, context):
+    """A trader must first register at the Broker and acquire a valid trader
+    ID and PIN.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
 
   def new_order(self, request, context):
     """Submits a new order.
@@ -70,16 +90,19 @@ class BrokerServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def get_traders_info(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
 
 def add_BrokerServicer_to_server(servicer, server):
   rpc_method_handlers = {
+      'info': grpc.unary_unary_rpc_method_handler(
+          servicer.info,
+          request_deserializer=common__pb2.Empty.FromString,
+          response_serializer=broker__pb2.BrokerInfo.SerializeToString,
+      ),
+      'register': grpc.unary_unary_rpc_method_handler(
+          servicer.register,
+          request_deserializer=broker__pb2.RegisterRequest.FromString,
+          response_serializer=broker__pb2.TraderResponse.SerializeToString,
+      ),
       'new_order': grpc.unary_unary_rpc_method_handler(
           servicer.new_order,
           request_deserializer=broker__pb2.TraderRequest.FromString,
@@ -94,11 +117,6 @@ def add_BrokerServicer_to_server(servicer, server):
           servicer.get_trader,
           request_deserializer=broker__pb2.TraderRequest.FromString,
           response_serializer=broker__pb2.TraderResponse.SerializeToString,
-      ),
-      'get_traders_info': grpc.unary_unary_rpc_method_handler(
-          servicer.get_traders_info,
-          request_deserializer=broker__pb2.TraderRequest.FromString,
-          response_serializer=broker__pb2.CompactTradeSummaryList.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
