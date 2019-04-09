@@ -15,10 +15,10 @@ from multiprocessing import Pool
 
 greedy_level = {'A001.PSE': 0.01, 'A002.PSE': 0.01, 'B001.PSE': 0.01, 'B002.PSE': 0.01}
 
-short_points_ave = {'A001.PSE': deque(maxlen=50),
-                  'A002.PSE': deque(maxlen=50),
-                  'B001.PSE': deque(maxlen=50),
-                  'B002.PSE': deque(maxlen=50)}
+short_points_ave = {'A001.PSE': deque(maxlen=30),
+                  'A002.PSE': deque(maxlen=30),
+                  'B001.PSE': deque(maxlen=30),
+                  'B002.PSE': deque(maxlen=30)}
 
 long_points_ave = {'A001.PSE': deque(maxlen=200),
                   'A002.PSE': deque(maxlen=200),
@@ -213,14 +213,14 @@ def main():
                 long_points_ave[sym].append(all_instrument_dict[sym]['deliver_price'])
                 short_points_ave[sym].append(all_instrument_dict[sym]['deliver_price'])
 
-            if i % 10 == 9:
+            if i % 20 == 19:
                 # print('in')
                 account_detail = position_order_parser(broker.GET_TRADER())
 
                 tasks = []
                 for ticker in ['A001.PSE', 'A002.PSE', 'B001.PSE', 'B002.PSE']:
-                    long_ave = np.mean(long_points_ave)
-                    short_ave = np.mean(short_points_ave)
+                    long_ave = np.mean(long_points_ave[ticker])
+                    short_ave = np.mean(short_points_ave[ticker])
 
                     tasks.extend(task_generator(account_detail, all_instrument_dict, ticker, long_ave, short_ave))
 
@@ -230,7 +230,7 @@ def main():
                     pass
                 else:
                     results = pool.map_async(order_on_task, tasks)
-                    results.wait(timeout=0.9)
+                    results.wait(timeout=2.5)
 
                 # pool.close()
                 print(time.time() - t0)
