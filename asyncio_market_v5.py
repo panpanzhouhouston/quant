@@ -341,7 +341,14 @@ def test_neworder():
 
 
 broker = Broker(25, 'qWC6G7nao', '113.208.112.25:57502')
-main()
+while True:
+    try:
+        main()
+
+    except:
+        print('run error, try again')
+        time.sleep(10)
+        pass
 
 
 
