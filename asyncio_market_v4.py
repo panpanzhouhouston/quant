@@ -144,7 +144,7 @@ def task_generator(account_detail, all_instrument_dict, ticker, long_ave, short_
     if ticker == 'A002.PSE':
         trend = (short_ave - long_ave)
     elif ticker == 'A001.PSE':
-        trend = (short-ave - long_ave)
+        trend = (short_ave - long_ave)
     else:
         trend = (short_ave - long_ave) / 2
 
