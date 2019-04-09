@@ -291,7 +291,7 @@ def main():
                 long_points_ave[sym].append(all_instrument_dict[sym]['deliver_price'])
                 short_points_ave[sym].append(all_instrument_dict[sym]['deliver_price'])
 
-            if i % 20 == 19:
+            if i % 15 == 14:
                 # print('in')
                 account_detail = position_order_parser(broker.GET_TRADER())
 
